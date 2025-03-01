@@ -1,0 +1,21 @@
+{
+  "name": "ticketsapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node index.js",
+    "tailwind-build": "npx tailwindcss -i ./input.css -o ./views/styles/output.css --watch",
+    "dev": "cross-env NODE_ENV=dev node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.0.9"
+  }
+}
