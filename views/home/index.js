@@ -61,13 +61,14 @@ const crearTicketElement = (ticket) => {
 
     //Se crea un dato adicional para reportar links faltantes
     let adicional = '';
-    if (!ticket.assignee && ticket.source.url) {
+    if (!ticket.assignee && ticket.source.url && ticket.status !== 'spam' ) {
         adicional = `<p>Sin asignar, reportar link ${ticket.source?.url}</p>`
     };
 
     //Diseñamos la previsualización de todos los tickets
     divTicket.innerHTML = `
         <p>Ticket: ${ticket.id}</p>
+        ${ticket.source.type === "lc2" ? `<p>Chat ID: ${ticket.source.id}</p>` : ''}
         <p>Usuario: ${ticket.requester.name}</p>
         <p>Subject: ${ticket.subject}</p>
         <p>Grupo: ${ticket.currentGroup.name}</p>
@@ -92,6 +93,7 @@ const mostrarDetalleTicket = (ticket) => {
     detalleDiv.innerHTML = `
         <div class="w-[90%] my-4 justify-self-center">
             <p>Ticket: ${ticket.id}</p>
+            ${ticket.source.type === "lc2" ? `<p>Chat ID: ${ticket.source.id}</p>` : ''}
             <p>Usuario: ${ticket.requester.name}</p>
             <p>Correo: ${ticket.requester.mail}</p>
             <p>Grupo actual: ${ticket.currentGroup.name}</p>
